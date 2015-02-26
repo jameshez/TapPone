@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="TapPone.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TapPone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel> 
+            <Image x:Name="monster" HorizontalAlignment="Left" Height="310" Margin="36,103,0,0" VerticalAlignment="Top" Width="329" Source="images/monsters/9.png"/>
+            <StackPanel  Orientation="Horizontal">
+                <Image x:Name="avatar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+                <TextBlock x:Name="statusTxt" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" FontSize="22"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
