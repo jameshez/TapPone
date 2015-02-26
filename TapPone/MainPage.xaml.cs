@@ -36,7 +36,7 @@ namespace TapPone
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
-            this.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler(mainpage_clicked), false);
+            rootpage.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler(mainpage_clicked), false);
             
             BitmapImage bitmapImage1 = new BitmapImage();
             Uri uri = new Uri("ms-appx:///images/avatar/" + random.Next(0, 11) + ".png");
@@ -60,6 +60,20 @@ namespace TapPone
                 monster.Source = bitmapImage; //(random.Next(0, 10) + ".png");
             }
             statusTxt.Text = "click " + clickCount + " times";
+            storyboard.Begin();
+            //CompositeTransform scale = new CompositeTransform()
+            //{
+            //    ScaleX = 0.9,
+            //    ScaleY = 0.9,
+            //};
+            //monster.RenderTransform = scale;
+            //monster.RenderTransform = null;
+
+            //<Image x:Name="monster" HorizontalAlignment="Left" Height="310" Margin="36,103,0,0" VerticalAlignment="Top" Width="329" Source="images/monsters/9.png" RenderTransformOrigin="0.5,0.5">
+            //    <Image.RenderTransform>
+            //        <CompositeTransform ScaleX="0.9"/>
+            //    </Image.RenderTransform>
+            //</Image>
            // mediaplayer.Play();
 
         }
