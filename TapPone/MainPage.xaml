@@ -11,11 +11,30 @@
 
     <Grid Background="#FF302B2B">
         <Grid.RowDefinitions>
-            <RowDefinition Height="350"></RowDefinition>
+            <RowDefinition Height="450"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Image x:Name="monster" HorizontalAlignment="Left" Height="310" Margin="36,103,0,0" VerticalAlignment="Top" Width="300" Source="images/monsters/9.png" RenderTransformOrigin="0.5,0.5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="300"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--hp bar-->
+            <Grid Grid.Row="1">
+                <Rectangle Fill="AntiqueWhite" 
+                           Height="15" Margin="80,0,0,0" 
+                           Width="250"
+                           HorizontalAlignment="Left"
+                           RadiusX="5" 
+                           RadiusY="5"/>
+                <Rectangle x:Name="monster_hp" Fill="Red" Height="15" 
+                           HorizontalAlignment="Left" 
+                           Margin="80,0,0,0" 
+                           Width="{Binding hp, Mode=OneWay}" 
+                           RadiusX="5" RadiusY="5"/>
+            </Grid>
+            <Image Grid.Row="2" x:Name="monster" HorizontalAlignment="Center" Height="300"  VerticalAlignment="Top" Width="300" Source="images/monsters/9.png" RenderTransformOrigin="0.5,0.5">
                 <Image.Resources>
                     <Storyboard x:Name="storyboard">
                         <DoubleAnimation Storyboard.TargetName="monster" 
@@ -26,11 +45,16 @@
                 </Image.Resources>
             </Image>
         </Grid>
-        <Grid Grid.Row="1">
+        <StackPanel Grid.Row="1">
             <StackPanel  Orientation="Horizontal" Height="100">
                 <Image x:Name="avatar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
-                <TextBlock x:Name="statusTxt" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" FontSize="22"/>
+                <!--<TextBlock x:Name="statusTxt" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" FontSize="22"/>-->
             </StackPanel>
-        </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Button_Click">状态</Button>
+                <Button></Button>
+                <Button></Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

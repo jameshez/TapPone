@@ -15,20 +15,13 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
-
 namespace TapPone
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         private int clickCount;
         Random random = new Random();
         BitmapImage bitmapImage = new BitmapImage();
-       // MediaPlayer a = Windows.Media.Playback.MediaPlayer;
 
         public MainPage()
         {
@@ -39,65 +32,33 @@ namespace TapPone
             rootpage.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler(mainpage_clicked), false);
             
             BitmapImage bitmapImage1 = new BitmapImage();
-            Uri uri = new Uri("ms-appx:///images/avatar/" + random.Next(0, 11) + ".png");
+            Uri uri = new Uri("ms-appx:///images/avatar/" + random.Next(1, 11) + ".png");
             bitmapImage1.UriSource = uri;
 
             avatar.Source = bitmapImage1;
 
-            
+            monster_hp.Width = 250;
+
         }
 
         private void mainpage_clicked(object sender, PointerRoutedEventArgs e)
         {
-            //throw new NotImplementedException();
             clickCount++;
-
+            monster_hp.Width = 250 - clickCount % 15 * 250 / 15;
             if (clickCount % 15 == 0)
             {
-                Uri uri = new Uri("ms-appx:///images/monsters/" + random.Next(0, 14) + ".png");
+                Uri uri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
                 bitmapImage.UriSource = uri;
 
-                monster.Source = bitmapImage; //(random.Next(0, 10) + ".png");
+                monster.Source = bitmapImage; 
             }
-            statusTxt.Text = "click " + clickCount + " times";
+            
             storyboard.Begin();
-            //CompositeTransform scale = new CompositeTransform()
-            //{
-            //    ScaleX = 0.9,
-            //    ScaleY = 0.9,
-            //};
-            //monster.RenderTransform = scale;
-            //monster.RenderTransform = null;
-
-            //<Image x:Name="monster" HorizontalAlignment="Left" Height="310" Margin="36,103,0,0" VerticalAlignment="Top" Width="329" Source="images/monsters/9.png" RenderTransformOrigin="0.5,0.5">
-            //    <Image.RenderTransform>
-            //        <CompositeTransform ScaleX="0.9"/>
-            //    </Image.RenderTransform>
-            //</Image>
-           // mediaplayer.Play();
+            
 
         }
 
-        //public void Vibrate(long durationSeconds)
-        //{
-        //    VibrateController vibController = VibrateController.Default;
-        //    TimeSpan ts = new TimeSpan(00, 00, durationSeconds);
-
-        //    vibController.Start(ts);
-        //}
-
-        //public static void VibrateStop()
-        //{
-        //    VibrateController vibController = VibrateController.Default;
-        //    vibController.Stop();
-        //}
-
-
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+       
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
@@ -107,6 +68,11 @@ namespace TapPone
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Flyout a = new Flyout(;)
         }
     }
 }
