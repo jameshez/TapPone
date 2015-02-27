@@ -48,12 +48,12 @@
         <StackPanel Grid.Row="1">
             <StackPanel  Orientation="Horizontal" Height="100">
                 <Image x:Name="avatar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
-                <!--<TextBlock x:Name="statusTxt" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" FontSize="22"/>-->
+                <TextBlock Height="100" x:Name="statusTxt" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" FontSize="22"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button Click="Button_Click">状态</Button>
-                <Button></Button>
-                <Button></Button>
+                <Button>佣兵</Button>
+                <Button>装备</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

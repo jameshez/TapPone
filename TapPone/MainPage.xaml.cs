@@ -50,15 +50,33 @@ namespace TapPone
                 Uri uri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
                 bitmapImage.UriSource = uri;
 
-                monster.Source = bitmapImage; 
+                monster.Source = bitmapImage;
+                statusTxt.Text += "掉落28金币\n";
             }
-            
+            //statusTxt.Text = "click " + clickCount + " times";
             storyboard.Begin();
-            
+        }        
 
-        }
+        //public void Vibrate(long durationSeconds)
+        //{
+        //    VibrateController vibController = VibrateController.Default;
+        //    TimeSpan ts = new TimeSpan(00, 00, durationSeconds);
 
-       
+        //    vibController.Start(ts);
+        //}
+
+        //public static void VibrateStop()
+        //{
+        //    VibrateController vibController = VibrateController.Default;
+        //    vibController.Stop();
+        //}
+
+
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
