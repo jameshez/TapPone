@@ -14,14 +14,20 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.Phone.Devices.Notification;
 
 namespace TapPone
 {
     public sealed partial class MainPage : Page
     {
-        private int clickCount;
+        private int attack_this_monster = 0;
         Random random = new Random();
         BitmapImage bitmapImage = new BitmapImage();
+
+        private long monster_hp_max = 390;
+        private long attack_power = 15;
+        private long life_click = 0;
+        private long gold = 0;
 
         public MainPage()
         {
@@ -36,34 +42,45 @@ namespace TapPone
             bitmapImage1.UriSource = uri;
 
             avatar.Source = bitmapImage1;
-
             monster_hp.Width = 250;
 
         }
 
         private void mainpage_clicked(object sender, PointerRoutedEventArgs e)
         {
-            clickCount++;
-            monster_hp.Width = 250 - clickCount % 15 * 250 / 15;
-            if (clickCount % 15 == 0)
+            attack_this_monster++;
+            life_click++;
+
+            long temp_left_hp = monster_hp_max - attack_this_monster * attack_power;
+
+            if (temp_left_hp <= 0)
             {
                 Uri uri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
                 bitmapImage.UriSource = uri;
 
                 monster.Source = bitmapImage;
-                statusTxt.Text += "掉落28金币\n";
+                statusTxt.Text += "打败一个怪兽，掉落28金币\n";
+                Vibrate();
+                attack_this_monster = 0;
+                monster_hp.Width = 250;
+
+                gold += 28;
             }
-            //statusTxt.Text = "click " + clickCount + " times";
+            else
+            {
+                monster_hp.Width = 250 * temp_left_hp / monster_hp_max;
+            }
+
             storyboard.Begin();
-        }        
+        }
 
-        //public void Vibrate(long durationSeconds)
-        //{
-        //    VibrateController vibController = VibrateController.Default;
-        //    TimeSpan ts = new TimeSpan(00, 00, durationSeconds);
-
-        //    vibController.Start(ts);
-        //}
+        public void Vibrate()
+        {
+            //VibrateController vibController = VibrateController.Default;
+            VibrationDevice testVibrationDevice = VibrationDevice.GetDefault();
+            testVibrationDevice.Vibrate(TimeSpan.FromSeconds(0.1));
+            //testVibrationDevice.Cancel();
+        }
 
         //public static void VibrateStop()
         //{
