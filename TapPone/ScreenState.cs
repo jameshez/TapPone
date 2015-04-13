@@ -47,9 +47,9 @@ namespace TapPone
 
         private void UpdateImageCommand_Executed()
         {
-            _imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
+            imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
             left_monster_hp -= 10;
-            NotifyPropertyChanged("imageUri");
+            //NotifyPropertyChanged("imageUri");
             NotifyPropertyChanged("left_monster_hp");
         }
 
