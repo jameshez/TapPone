@@ -19,12 +19,13 @@ namespace TapPone
         private Uri _imageUri;
         public double total_monster_hp { get; set; }
         public double left_monster_hp { get; set; }
-
+        public string monster_name { get; set; }
         public ScreenState()
         {
             total_monster_hp = 250;
             left_monster_hp = 250;
             _imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
+            monster_name = imageUri.ToString();
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -47,10 +48,18 @@ namespace TapPone
 
         private void UpdateImageCommand_Executed()
         {
-            imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
             left_monster_hp -= 10;
+
+            if(left_monster_hp<0)
+            {
+                imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
+                monster_name = imageUri.ToString();
+                left_monster_hp = 250;
+            }
+
             //NotifyPropertyChanged("imageUri");
             NotifyPropertyChanged("left_monster_hp");
+            NotifyPropertyChanged("monster_name");
         }
 
         private void userTap()

@@ -27,14 +27,13 @@
                 <Rectangle Fill="AntiqueWhite" 
                            Height="15" Margin="80,0,0,0" 
                            Width="{Binding total_monster_hp}"
-                           HorizontalAlignment="Left"
-                           RadiusX="5" 
-                           RadiusY="5"/>
+                           HorizontalAlignment="Left"/>
                 <Rectangle x:Name="monster_hp" Fill="Red" Height="15" 
                            Width="{Binding left_monster_hp}"
                            HorizontalAlignment="Left" 
-                           Margin="80,0,0,0" 
-                           RadiusX="5" RadiusY="5"/>
+                           Margin="80,0,0,0"
+                           />
+                <TextBlock Margin="80,0,0,0" Text="{Binding monster_name}"></TextBlock>
             </Grid>
             <Button Grid.Row="2" HorizontalAlignment="Center" 
                     Height="300" VerticalAlignment="Top" 
