@@ -82,6 +82,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="TextBlock" >
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
     </Application.Resources>
 
 </Application>

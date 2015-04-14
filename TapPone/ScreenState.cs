@@ -18,9 +18,11 @@ namespace TapPone
 
         public ScreenState()
         {
-            _total_monster_hp = 250;
-            _left_monster_hp = 250;
-            _imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
+            total_monster_hp = 250;
+            left_monster_hp = 250;
+            attack = 20;
+            level = 1;
+            imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
             monster_name = imageUri.ToString();
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -42,15 +44,31 @@ namespace TapPone
             }
         }
 
+        public ICommand levelUpCommand
+        {
+            get
+            {
+                return new DelegateCommand(this.levelUpCommand_Executed);
+            }
+        }
+
+        private void levelUpCommand_Executed()
+        {
+            //throw new NotImplementedException();
+            level++;
+            attack += 20;
+        }
+
         private void UpdateImageCommand_Executed()
         {
-            _left_monster_hp -= 10;
+            left_monster_hp -= attack;
 
-            if(_left_monster_hp<0)
+            if (_left_monster_hp <= 0)
             {
                 imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
                 monster_name = imageUri.ToString();
-                _left_monster_hp = 250;
+                total_monster_hp += 40;
+                left_monster_hp = total_monster_hp;
             }
             NotifyPropertyChanged("monster_left_percentage");
         }

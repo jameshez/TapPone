@@ -27,13 +27,14 @@
                 <Rectangle Fill="AntiqueWhite" 
                            Height="15" Margin="80,0,0,0" 
                            Width="250"
-                           HorizontalAlignment="Left"/>
+                           HorizontalAlignment="Left"
+                           RadiusX="3" RadiusY="3"/>
                 <Rectangle x:Name="monster_hp" Fill="Red" Height="15" 
                            Width="{Binding monster_left_percentage}"
                            HorizontalAlignment="Left" 
                            Margin="80,0,0,0"
-                           />
-                <TextBlock Margin="80,0,0,0" Text="{Binding monster_name}"></TextBlock>
+                           RadiusX="3" RadiusY="3"/>
+                <TextBlock Margin="80,0,0,0" FontSize="10" Text="{Binding monster_name}"></TextBlock>
             </Grid>
             <Button Grid.Row="2" HorizontalAlignment="Center" 
                     Height="300" VerticalAlignment="Top" 
@@ -42,12 +43,24 @@
             </Button>
         </Grid>
         <StackPanel Grid.Row="1">
-            <StackPanel  Orientation="Horizontal" Height="100">
-                <Image x:Name="avatar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
-                <TextBlock Height="100" x:Name="statusTxt" HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" TextWrapping="Wrap" FontSize="18"/>
+            <StackPanel Height="100">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Monster HP: "></TextBlock>
+                    <TextBlock Text="{Binding left_monster_hp}"></TextBlock>
+                    <TextBlock Text=" / "></TextBlock>
+                    <TextBlock Text="{Binding total_monster_hp}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Attack Power:</TextBlock>
+                    <TextBlock Text="{Binding attack}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Current level:</TextBlock>
+                    <TextBlock Text="{Binding level}"></TextBlock>
+                </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding levelUpCommand}">Level Up</Button>
                 <!--<AppBarButton Click="Button_Click"></AppBarButton>
                 <AppBarButton></AppBarButton>
                 <AppBarButton></AppBarButton>-->
