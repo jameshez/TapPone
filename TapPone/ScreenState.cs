@@ -12,18 +12,14 @@ namespace TapPone
     /// <summary>
     /// let's do it next version by using MVVM
     /// </summary>
-    class ScreenState : INotifyPropertyChanged
+    public partial class ScreenState : INotifyPropertyChanged
     {
         Random random = new Random();
-        //monster image 
-        private Uri _imageUri;
-        public double total_monster_hp { get; set; }
-        public double left_monster_hp { get; set; }
-        public string monster_name { get; set; }
+
         public ScreenState()
         {
-            total_monster_hp = 250;
-            left_monster_hp = 250;
+            _total_monster_hp = 250;
+            _left_monster_hp = 250;
             _imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
             monster_name = imageUri.ToString();
         }
@@ -48,27 +44,25 @@ namespace TapPone
 
         private void UpdateImageCommand_Executed()
         {
-            left_monster_hp -= 10;
+            _left_monster_hp -= 10;
 
-            if(left_monster_hp<0)
+            if(_left_monster_hp<0)
             {
                 imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
                 monster_name = imageUri.ToString();
-                left_monster_hp = 250;
+                _left_monster_hp = 250;
             }
-
-            //NotifyPropertyChanged("imageUri");
-            NotifyPropertyChanged("left_monster_hp");
-            NotifyPropertyChanged("monster_name");
+            NotifyPropertyChanged("monster_left_percentage");
         }
 
         private void userTap()
         {
-
+            //System.Reflection.Emit
         }
 
-        
 
+        //monster image 
+        private Uri _imageUri;
         public Uri imageUri
         {
             get

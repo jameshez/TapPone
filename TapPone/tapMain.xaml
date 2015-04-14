@@ -26,10 +26,10 @@
             <Grid Grid.Row="1">
                 <Rectangle Fill="AntiqueWhite" 
                            Height="15" Margin="80,0,0,0" 
-                           Width="{Binding total_monster_hp}"
+                           Width="250"
                            HorizontalAlignment="Left"/>
                 <Rectangle x:Name="monster_hp" Fill="Red" Height="15" 
-                           Width="{Binding left_monster_hp}"
+                           Width="{Binding monster_left_percentage}"
                            HorizontalAlignment="Left" 
                            Margin="80,0,0,0"
                            />
