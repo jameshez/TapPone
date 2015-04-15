@@ -12,7 +12,9 @@ namespace TapPone
     /// </summary>
     public partial class ScreenState
     {
-
+        /// <summary>
+        /// /minxing comment
+        /// </summary>
         private double _total_monster_hp;
         public double total_monster_hp
         {
