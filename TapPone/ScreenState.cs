@@ -16,6 +16,11 @@ namespace TapPone
     {
         Random random = new Random();
 
+
+ 
+
+
+
         public ScreenState()
         {
             total_monster_hp = 250;
@@ -57,6 +62,8 @@ namespace TapPone
             //throw new NotImplementedException();
             level++;
             attack += 20;
+
+
         }
 
         private void UpdateImageCommand_Executed()
