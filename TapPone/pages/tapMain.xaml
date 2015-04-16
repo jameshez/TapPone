@@ -8,6 +8,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     >
+    <Page.Resources>
+        <local:HPpercentageConverter x:Key="HPpercentageConverter"/>
+    </Page.Resources>
 
     <Grid Background="#FF302B2B">
         <Grid.RowDefinitions>
@@ -31,7 +34,7 @@
                            HorizontalAlignment="Left"
                            RadiusX="3" RadiusY="3"/>
                 <Rectangle x:Name="monster_hp" Fill="Red" Height="15" 
-                           Width="{Binding monster_left_percentage}"
+                           Width="{Binding monster, Converter={StaticResource HPpercentageConverter}}"
                            HorizontalAlignment="Left" 
                            Margin="80,0,0,0"
                            RadiusX="3" RadiusY="3"/>
@@ -40,7 +43,7 @@
             <Button Grid.Row="2" HorizontalAlignment="Center" 
                     Height="300" VerticalAlignment="Top" 
                     Width="300" Command="{Binding UpdateImageCommand}" Style="{StaticResource MonsterHolderBt}">
-                <Image x:Name="monster" Source="{Binding imageUri}" />
+                <Image x:Name="monster" Source="{Binding monster.imageUri}" />
             </Button>
         </Grid>
         <StackPanel Grid.Row="1">
@@ -53,11 +56,11 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>Attack Power:</TextBlock>
-                    <TextBlock Text="{Binding attack}"></TextBlock>
+                    <TextBlock Text="{Binding hero.attack}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>Current level:</TextBlock>
-                    <TextBlock Text="{Binding level}"></TextBlock>
+                    <TextBlock Text="{Binding hero.level}"></TextBlock>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">

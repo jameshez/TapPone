@@ -83,6 +83,8 @@
     <Folder Include="sounds\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="accessories\converters.cs" />
+    <Compile Include="accessories\hero.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

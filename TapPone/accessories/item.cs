@@ -20,5 +20,18 @@ namespace TapPone
                 _name = value;
             }
         }
+
+        private Uri _imageUri;
+        public Uri imageUri
+        {
+            get
+            {
+                return _imageUri;
+            }
+            set
+            {
+                _imageUri = value;
+            }
+        }
     }
 }

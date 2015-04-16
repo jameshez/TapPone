@@ -31,6 +31,20 @@ namespace TapPone
             }
         }
 
+        private hero _hero;
+        public hero hero
+        {
+            get
+            {
+                return _hero;
+            }
+            set
+            {
+                _hero = value;
+                NotifyPropertyChanged("hero");
+            }
+        }
+
 
  
 
@@ -43,10 +57,13 @@ namespace TapPone
                 total_monster_hp = 250,
                 left_monster_hp = 250
             };
-            attack = 20;
-            level = 1;
-            imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
-            monster.name = imageUri.ToString();
+            hero = new hero()
+            {
+                attack = 20,
+                level = 1
+            };
+            monster.imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
+            monster.name = monster.imageUri.ToString();
             //NotifyPropertyChanged("monster");
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -79,24 +96,24 @@ namespace TapPone
         private void levelUpCommand_Executed()
         {
             //throw new NotImplementedException();
-            level++;
-            attack += 20;
+            hero.level++;
+            hero.attack += 20;
 
 
         }
 
         private void UpdateImageCommand_Executed()
         {
-            monster.left_monster_hp -= attack;
+            monster.left_monster_hp -= hero.attack;
 
             if (monster.left_monster_hp <= 0)
             {
-                imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
-                monster.name = imageUri.ToString();
+                monster.imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
+                monster.name = monster.imageUri.ToString();
                 monster.total_monster_hp += 40;
                 monster.left_monster_hp = monster.total_monster_hp;
             }
-            NotifyPropertyChanged("monster");
+            NotifyPropertyChanged("monster.left_monster_hp");
         }
 
         private void userTap()
@@ -106,19 +123,7 @@ namespace TapPone
 
 
         //monster image 
-        private Uri _imageUri;
-        public Uri imageUri
-        {
-            get
-            {
-                return _imageUri;
-            }
-            set
-            {
-                _imageUri = value;
-                NotifyPropertyChanged("imageUri");
-            }
-        }
+        
 
         
     }

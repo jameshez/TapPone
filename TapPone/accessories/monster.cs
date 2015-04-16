@@ -33,5 +33,6 @@ namespace TapPone
                 _left_monster_hp = value;
             }
         }
+
     }
 }
