@@ -72,7 +72,7 @@ namespace TapPone
                 gold = 1,
                 imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 13) + ".png"),
                 name = "怪物小兵" + _count,
-                isBoss = false;
+                isBoss = false,
             };
 
             hero = new hero()
