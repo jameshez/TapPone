@@ -41,7 +41,7 @@ namespace TapPone
         {
             get
             {
-                if (gold > level * 10)
+                if (gold >= level * 10)
                 {
                     return true;
                 }

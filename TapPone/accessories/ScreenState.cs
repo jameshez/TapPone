@@ -15,7 +15,7 @@ namespace TapPone
     public partial class ScreenState : INotifyPropertyChanged
     {
         Random random = new Random();
-
+        private int _count = 1;
 
         private monster _monster;
         public monster monster
@@ -68,9 +68,9 @@ namespace TapPone
             {
                 total_monster_hp = 250,
                 left_monster_hp = 250,
-                gold = 10,
+                gold = 1,
                 imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png"),
-                name = "aaaa",
+                name = "怪物小兵" + _count,
             };
 
             hero = new hero()
@@ -111,9 +111,10 @@ namespace TapPone
 
         private void levelUpCommand_Executed()
         {
-            hero.level++;
+            
             hero.attack += 20;
             hero.gold -= hero.level * 10;
+            hero.level++;
             NotifyPropertyChanged("hero");
         }
 
@@ -121,15 +122,36 @@ namespace TapPone
         {
             monster.left_monster_hp -= hero.attack;
 
+            //level up
             if (monster.left_monster_hp <= 0)
             {
-                monster.imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
-                monster.name = monster.imageUri.ToString();
-                monster.total_monster_hp += 40;
-                monster.left_monster_hp = monster.total_monster_hp;
+                _count++;
                 hero.gold += monster.gold;
+
+                if (_count % 10 != 0)
+                {
+                    monster.imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 13) + ".png");
+                    monster.name = "怪物小兵" + _count;
+                    if (_count % 10 == 1)
+                    {
+                        monster.total_monster_hp -= 200;
+                        monster.gold = (int)(_count / 10) + 1;
+                    }
+                    monster.total_monster_hp += 20;
+                }
+                else
+                {
+                    monster.imageUri = new Uri("ms-appx:///images/monsters/13.png");
+                    monster.name = "怪物Boss";
+                    monster.total_monster_hp += 220;
+                    monster.gold = _count;
+                }
+
+                monster.left_monster_hp = monster.total_monster_hp;
+                
                 monsterImage = monster.imageUri;
                 NotifyPropertyChanged("monsterImage");
+                
             }
             NotifyPropertyChanged("monster");
             NotifyPropertyChanged("hero");

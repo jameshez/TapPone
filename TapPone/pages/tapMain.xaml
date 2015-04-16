@@ -49,26 +49,26 @@
         <StackPanel Grid.Row="1">
             <StackPanel Height="100">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Monster HP: "></TextBlock>
+                    <TextBlock Text="怪物血量: "></TextBlock>
                     <TextBlock Text="{Binding monster.left_monster_hp}"></TextBlock>
                     <TextBlock Text=" / "></TextBlock>
                     <TextBlock Text="{Binding monster.total_monster_hp}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Attack Power:</TextBlock>
+                    <TextBlock>攻击力:</TextBlock>
                     <TextBlock Text="{Binding hero.attack}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Current level:</TextBlock>
+                    <TextBlock>当前等级:</TextBlock>
                     <TextBlock Text="{Binding hero.level}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>My Gold:</TextBlock>
+                    <TextBlock>金币:</TextBlock>
                     <TextBlock Text="{Binding hero.gold}"></TextBlock>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding levelUpCommand}" IsEnabled="{Binding hero.levelUpEnable}">Level Up</Button>
+                <AppBarButton Icon="Add" Label="升级" Command="{Binding levelUpCommand}" IsEnabled="{Binding hero.levelUpEnable}" />
                 <!--<AppBarButton Click="Button_Click"></AppBarButton>
                 <AppBarButton></AppBarButton>
                 <AppBarButton></AppBarButton>-->
