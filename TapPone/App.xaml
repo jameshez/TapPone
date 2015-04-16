@@ -55,7 +55,7 @@
                                         <Storyboard>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="Border">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="4"/>
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="5"/>
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>

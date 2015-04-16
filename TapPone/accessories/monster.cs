@@ -35,5 +35,18 @@ namespace TapPone
             }
         }
 
+        private bool _isBoss;
+        public bool isBoss
+        {
+            get
+            {
+                return _isBoss;
+            }
+            set
+            {
+                _isBoss = value;
+            }
+        }
+
     }
 }

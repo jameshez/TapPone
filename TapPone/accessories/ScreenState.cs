@@ -69,8 +69,9 @@ namespace TapPone
                 total_monster_hp = 250,
                 left_monster_hp = 250,
                 gold = 1,
-                imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png"),
+                imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 13) + ".png"),
                 name = "怪物小兵" + _count,
+                isBoss = false;
             };
 
             hero = new hero()
@@ -134,13 +135,15 @@ namespace TapPone
                     monster.name = "怪物小兵" + _count;
                     if (_count % 10 == 1)
                     {
-                        monster.total_monster_hp -= 200;
+                        monster.total_monster_hp -= 220;
                         monster.gold = (int)(_count / 10) + 1;
                     }
                     monster.total_monster_hp += 20;
+                    monster.isBoss = false;
                 }
                 else
                 {
+                    monster.isBoss = true;
                     monster.imageUri = new Uri("ms-appx:///images/monsters/13.png");
                     monster.name = "怪物Boss";
                     monster.total_monster_hp += 220;
