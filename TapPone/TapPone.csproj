@@ -87,9 +87,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="data.cs" />
+    <Compile Include="item.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="monster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenState.cs" />
     <Compile Include="tapMain.xaml.cs">

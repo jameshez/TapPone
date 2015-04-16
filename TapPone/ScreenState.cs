@@ -17,18 +17,37 @@ namespace TapPone
         Random random = new Random();
 
 
+        private monster _monster;
+        public monster monster
+        {
+            get
+            {
+                return _monster;
+            }
+            set
+            {
+                _monster = value;
+                NotifyPropertyChanged("monster");
+            }
+        }
  
 
 
 
         public ScreenState()
         {
-            total_monster_hp = 250;
-            left_monster_hp = 250;
+            monster = new monster()
+            {
+                total_monster_hp = 250,
+                left_monster_hp = 250
+            };
+            //total_monster_hp = 250;
+            //left_monster_hp = 250;
             attack = 20;
             level = 1;
             imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
-            monster_name = imageUri.ToString();
+            monster.name = imageUri.ToString();
+            //NotifyPropertyChanged("monster");
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -68,16 +87,16 @@ namespace TapPone
 
         private void UpdateImageCommand_Executed()
         {
-            left_monster_hp -= attack;
+            monster.left_monster_hp -= attack;
 
-            if (_left_monster_hp <= 0)
+            if (monster.left_monster_hp <= 0)
             {
                 imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
-                monster_name = imageUri.ToString();
-                total_monster_hp += 40;
-                left_monster_hp = total_monster_hp;
+                monster.name = imageUri.ToString();
+                monster.total_monster_hp += 40;
+                monster.left_monster_hp = monster.total_monster_hp;
             }
-            NotifyPropertyChanged("monster_left_percentage");
+            NotifyPropertyChanged("monster");
         }
 
         private void userTap()

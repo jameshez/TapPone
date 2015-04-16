@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    >
 
     <Grid Background="#FF302B2B">
         <Grid.RowDefinitions>
@@ -34,7 +35,7 @@
                            HorizontalAlignment="Left" 
                            Margin="80,0,0,0"
                            RadiusX="3" RadiusY="3"/>
-                <TextBlock Margin="80,0,0,0" FontSize="10" Text="{Binding monster_name}"></TextBlock>
+                <TextBlock Margin="80,0,0,0" FontSize="10" Text="{Binding monster.name}"></TextBlock>
             </Grid>
             <Button Grid.Row="2" HorizontalAlignment="Center" 
                     Height="300" VerticalAlignment="Top" 
@@ -46,9 +47,9 @@
             <StackPanel Height="100">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Monster HP: "></TextBlock>
-                    <TextBlock Text="{Binding left_monster_hp}"></TextBlock>
+                    <TextBlock Text="{Binding monster.left_monster_hp}"></TextBlock>
                     <TextBlock Text=" / "></TextBlock>
-                    <TextBlock Text="{Binding total_monster_hp}"></TextBlock>
+                    <TextBlock Text="{Binding monster.total_monster_hp}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>Attack Power:</TextBlock>
