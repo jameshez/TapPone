@@ -88,11 +88,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="accessories\data.cs" />
     <Compile Include="accessories\item.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="accessories\monster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="accessories\ScreenState.cs" />
@@ -141,10 +137,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="pages\tapMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

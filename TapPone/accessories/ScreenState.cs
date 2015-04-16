@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Phone.Devices.Notification;
 
 namespace TapPone
 {
@@ -119,6 +120,12 @@ namespace TapPone
             NotifyPropertyChanged("hero");
         }
 
+        public void Vibrate()
+        {
+            VibrationDevice testVibrationDevice = VibrationDevice.GetDefault();
+            testVibrationDevice.Vibrate(TimeSpan.FromSeconds(0.1));
+        }
+
         private void UpdateImageCommand_Executed()
         {
             monster.left_monster_hp -= hero.attack;
@@ -126,6 +133,7 @@ namespace TapPone
             //level up
             if (monster.left_monster_hp <= 0)
             {
+                Vibrate();
                 _count++;
                 hero.gold += monster.gold;
 
