@@ -43,7 +43,7 @@
             <Button Grid.Row="2" HorizontalAlignment="Center" 
                     Height="300" VerticalAlignment="Top" 
                     Width="300" Command="{Binding UpdateImageCommand}" Style="{StaticResource MonsterHolderBt}">
-                <Image x:Name="monster" Source="{Binding monster.imageUri}" />
+                <Image x:Name="monster" Source="{Binding monsterImage}" />
             </Button>
         </Grid>
         <StackPanel Grid.Row="1">
@@ -62,9 +62,13 @@
                     <TextBlock>Current level:</TextBlock>
                     <TextBlock Text="{Binding hero.level}"></TextBlock>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>My Gold:</TextBlock>
+                    <TextBlock Text="{Binding hero.gold}"></TextBlock>
+                </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding levelUpCommand}">Level Up</Button>
+                <Button Command="{Binding levelUpCommand}" IsEnabled="{Binding hero.levelUpEnable}">Level Up</Button>
                 <!--<AppBarButton Click="Button_Click"></AppBarButton>
                 <AppBarButton></AppBarButton>
                 <AppBarButton></AppBarButton>-->

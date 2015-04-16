@@ -9,7 +9,7 @@ namespace TapPone
     public abstract class item
     {
         private string _name;
-        public virtual string name
+        public string name
         {
             get
             {
@@ -31,6 +31,19 @@ namespace TapPone
             set
             {
                 _imageUri = value;
+            }
+        }
+
+        private long _gold;
+        public long gold
+        {
+            get
+            {
+                return _gold;
+            }
+            set
+            {
+                _gold = value;
             }
         }
     }

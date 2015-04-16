@@ -36,5 +36,17 @@ namespace TapPone
                 }
             }
         }
+        
+        public bool levelUpEnable
+        {
+            get
+            {
+                if (gold > level * 10)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

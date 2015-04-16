@@ -45,7 +45,19 @@ namespace TapPone
             }
         }
 
-
+        private Uri _monsterImage;
+        public Uri monsterImage
+        {
+            get
+            {
+                return _monsterImage;
+            }
+            set
+            {
+                _monsterImage = value;
+                NotifyPropertyChanged("monsterImage");
+            }
+        }
  
 
 
@@ -55,16 +67,20 @@ namespace TapPone
             monster = new monster()
             {
                 total_monster_hp = 250,
-                left_monster_hp = 250
+                left_monster_hp = 250,
+                gold = 10,
+                imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png"),
+                name = "aaaa",
             };
+
             hero = new hero()
             {
                 attack = 20,
-                level = 1
+                level = 1,
+                gold = 0,
             };
-            monster.imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
-            monster.name = monster.imageUri.ToString();
-            //NotifyPropertyChanged("monster");
+
+            monsterImage = monster.imageUri;
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -95,11 +111,10 @@ namespace TapPone
 
         private void levelUpCommand_Executed()
         {
-            //throw new NotImplementedException();
             hero.level++;
             hero.attack += 20;
-
-
+            hero.gold -= hero.level * 10;
+            NotifyPropertyChanged("hero");
         }
 
         private void UpdateImageCommand_Executed()
@@ -112,8 +127,13 @@ namespace TapPone
                 monster.name = monster.imageUri.ToString();
                 monster.total_monster_hp += 40;
                 monster.left_monster_hp = monster.total_monster_hp;
+                hero.gold += monster.gold;
+                monsterImage = monster.imageUri;
+                NotifyPropertyChanged("monsterImage");
             }
-            NotifyPropertyChanged("monster.left_monster_hp");
+            NotifyPropertyChanged("monster");
+            NotifyPropertyChanged("hero");
+            
         }
 
         private void userTap()
