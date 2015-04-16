@@ -30,6 +30,8 @@ namespace TapPone
                 NotifyPropertyChanged("monster");
             }
         }
+
+
  
 
 
@@ -41,8 +43,6 @@ namespace TapPone
                 total_monster_hp = 250,
                 left_monster_hp = 250
             };
-            //total_monster_hp = 250;
-            //left_monster_hp = 250;
             attack = 20;
             level = 1;
             imageUri = new Uri("ms-appx:///images/monsters/" + random.Next(1, 14) + ".png");
