@@ -5,6 +5,9 @@
     xmlns:local="using:TapPone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     >
@@ -13,6 +16,13 @@
     </Page.Resources>
 
     <Grid Background="#FF302B2B">
+        <i:Interaction.Behaviors>
+            <core:EventTriggerBehavior EventName="PointerPressed">
+                <core:GoToStateAction TargetObject="{Binding ElementName=monster_host}" StateName="Pressed"/>
+                <core:InvokeCommandAction Command="{Binding UpdateImageCommand}"/>
+                <core:GoToStateAction TargetObject="{Binding ElementName=monster_host}" StateName="Normal"/>
+            </core:EventTriggerBehavior>
+        </i:Interaction.Behaviors>
         <Grid.RowDefinitions>
             <RowDefinition Height="450"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -23,7 +33,7 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="300"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid x:Name="grid" Grid.Row="0">
 
             </Grid>
             <!--hp bar-->
@@ -40,9 +50,9 @@
                            RadiusX="3" RadiusY="3"/>
                 <TextBlock Margin="80,0,0,0" FontSize="10" Text="{Binding monster.name}"></TextBlock>
             </Grid>
-            <Button Grid.Row="2" HorizontalAlignment="Center" 
+            <Button x:Name="monster_host" Grid.Row="2" HorizontalAlignment="Center" 
                     Height="300" VerticalAlignment="Top" 
-                    Width="300" Command="{Binding UpdateImageCommand}" Style="{StaticResource MonsterHolderBt}">
+                    Width="300" Style="{StaticResource MonsterHolderBt}">
                 <Image x:Name="monster" Source="{Binding monsterImage}" />
             </Button>
         </Grid>

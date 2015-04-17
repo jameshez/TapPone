@@ -46,5 +46,10 @@ namespace TapPone
         {
         }
 
+        private void Grid_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+
+        }
+
     }
 }
