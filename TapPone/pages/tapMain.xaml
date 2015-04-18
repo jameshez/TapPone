@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-
+    xmlns:m="using:Microsoft.Xaml.Interactions.Media"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     >
@@ -18,9 +18,9 @@
     <Grid Background="#FF302B2B">
         <i:Interaction.Behaviors>
             <core:EventTriggerBehavior EventName="PointerPressed">
-                <core:GoToStateAction TargetObject="{Binding ElementName=monster_host}" StateName="Pressed"/>
+                <m:ControlStoryboardAction Storyboard="{Binding ElementName=hit_monster}" ControlStoryboardOption="Play"/>
                 <core:InvokeCommandAction Command="{Binding UpdateImageCommand}"/>
-                <core:GoToStateAction TargetObject="{Binding ElementName=monster_host}" StateName="Normal"/>
+                <!--<core:GoToStateAction TargetObject="{Binding ElementName=monster_host}" StateName="Normal"/>-->
             </core:EventTriggerBehavior>
         </i:Interaction.Behaviors>
         <Grid.RowDefinitions>
@@ -50,11 +50,19 @@
                            RadiusX="3" RadiusY="3"/>
                 <TextBlock Margin="80,0,0,0" FontSize="10" Text="{Binding monster.name}"></TextBlock>
             </Grid>
-            <Button x:Name="monster_host" Grid.Row="2" HorizontalAlignment="Center" 
-                    Height="300" VerticalAlignment="Top" 
-                    Width="300" Style="{StaticResource MonsterHolderBt}">
-                <Image x:Name="monster" Source="{Binding monsterImage}" />
-            </Button>
+            <Image x:Name="monster" Height="300" VerticalAlignment="Top" Grid.Row="2" 
+                    Width="300" Source="{Binding monsterImage}">
+                <Image.Resources>
+                    <Storyboard x:Name="hit_monster">
+                        <DoubleAnimation 
+                            Storyboard.TargetName="monster"
+                            Storyboard.TargetProperty="Height"
+                            EnableDependentAnimation="True" 
+                            From="300" To="280" Duration="0:0:0.5">
+                        </DoubleAnimation>
+                    </Storyboard>
+                </Image.Resources>
+            </Image>
         </Grid>
         <StackPanel Grid.Row="1">
             <StackPanel Height="100">

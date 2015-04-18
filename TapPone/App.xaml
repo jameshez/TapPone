@@ -13,6 +13,9 @@
         <x:Double x:Key="PhoneButtonMinWidth">109</x:Double>
         <Thickness x:Key="PhoneTouchTargetOverhang">0,9.5</Thickness>
         <SolidColorBrush x:Key="ButtonDisabledBackgroundThemeBrush" Color="Transparent"/>
+        
+        
+        
         <Style x:Key="MonsterHolderBt" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="{ThemeResource PhoneForegroundBrush}"/>
@@ -53,10 +56,18 @@
                                     <VisualState x:Name="PointerOver"/>
                                     <VisualState x:Name="Pressed">
                                         <Storyboard>
-                                            
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="Border">
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="BorderThickness"
+                                                From="0" To="5" Duration="0:0:1" AutoReverse="True">
+                                            </DoubleAnimation>
+
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="Border">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="5"/>
                                             </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="Border">
+                                                <DiscreteObjectKeyFrame KeyTime="1" Value="0"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="Disabled">
@@ -85,6 +96,27 @@
         <Style TargetType="TextBlock" >
             <Setter Property="FontSize" Value="20"></Setter>
         </Style>
+        <!--<Style x:Key="monsterImageStyle" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="">
+                        <Grid x:Name="Grid" Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="Border">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="5"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
     </Application.Resources>
 
 </Application>
