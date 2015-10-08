@@ -42,7 +42,9 @@
                            Height="15" Margin="80,0,0,0" 
                            Width="250"
                            HorizontalAlignment="Left"
-                           RadiusX="3" RadiusY="3"/>
+                           RadiusX="3" RadiusY="3">
+
+                </Rectangle>
                 <Rectangle x:Name="monster_hp" Fill="Red" Height="15" 
                            Width="{Binding monster, Converter={StaticResource HPpercentageConverter}}"
                            HorizontalAlignment="Left" 
